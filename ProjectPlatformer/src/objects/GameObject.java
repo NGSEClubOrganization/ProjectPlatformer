@@ -13,6 +13,7 @@ public abstract class GameObject {
 	private double width;
 	private double height;
 	
+	public boolean toBeRemoved = false;
 	
 	public abstract void updateState();
 	
@@ -63,6 +64,9 @@ public abstract class GameObject {
 		y += vy;
 	}
 	
+	public void remove(){
+		toBeRemoved = true;
+	}
 	
 	
 	
