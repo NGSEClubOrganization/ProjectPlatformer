@@ -2,7 +2,7 @@ package objects;
 
 import java.awt.Rectangle;
 
-public class GeneralObject {
+public abstract class GameObject {
 	
 	private double x;
 	private double y;
@@ -13,19 +13,28 @@ public class GeneralObject {
 	private double width;
 	private double height;
 	
+	public boolean toBeRemoved = false;
 	
-	public GeneralObject(double x, double y, double width, double height){
+	public abstract void updateState();
+	
+	public GameObject(double x, double y, double width, double height){
 		setPosition(x,y);
 		this.width = width;
 		this.height = height;
 	}
 	
-	public double getX(){
+	public double getLeftX(){
 		return x;
 	}
+	public double getRightX() {
+		return x + width;
+	}
 	
-	public double getY(){
+	public double getTopY(){
 		return y;
+	}
+	public double getBottomY() {
+		return y + height;
 	}
 	
 	public void setPosition(double x, double y){
@@ -55,6 +64,9 @@ public class GeneralObject {
 		y += vy;
 	}
 	
+	public void remove(){
+		toBeRemoved = true;
+	}
 	
 	
 	
